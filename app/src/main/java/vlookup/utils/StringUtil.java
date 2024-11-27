@@ -12,7 +12,8 @@ public class StringUtil {
         List<Coordinate> coordinates = new ArrayList<>();
         int[] queue = new int[2];
         int i = 0;
-        for (int start = 2, end = 3; end < data.length(); end++) {
+        int start, end;
+        for (start = 2, end = 3; end < data.length() - 2; end++) {
             if (data.substring(end, end + 1).equals(DATA_SEPARATOR)) {
                 String coordinate = data.substring(start, end + 1);
                 start = end + 1;
@@ -23,6 +24,8 @@ public class StringUtil {
                 }
             }
         }
+        queue[i] = Integer.parseInt(data.substring(start, end));
+        coordinates.add(new Coordinate(queue[0], queue[1]));
         return coordinates;
     }
     
