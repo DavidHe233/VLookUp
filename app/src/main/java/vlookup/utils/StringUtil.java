@@ -1,4 +1,4 @@
 package vlookup.utils;
 
-public class StringUtil { 
+public class StringUtil {
 }
