@@ -14,6 +14,11 @@ public class StringUtil {
         int i = 0;
         int start, end;
         for (start = 2, end = 3; end < data.length() - 2; end++) {
+            if (data.substring(end, end + 1).equals("C")) {
+                queue[i] = Integer.parseInt(data.substring(start, end));
+                coordinates.add(new Coordinate(queue[0], queue[1]));
+                break;
+            }
             if (data.substring(end, end + 1).equals(DATA_SEPARATOR)) {
                 String coordinate = data.substring(start, end + 1);
                 start = end + 1;
@@ -24,8 +29,6 @@ public class StringUtil {
                 }
             }
         }
-        queue[i] = Integer.parseInt(data.substring(start, end));
-        coordinates.add(new Coordinate(queue[0], queue[1]));
         return coordinates;
     }
     
