@@ -23,7 +23,10 @@ public class IOUtil {
                 System.out.println("Port not found");
             }
         }
-        System.out.println("Selected port: " + port.getSystemPortName());
+        port.setComPortParameters(9600, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
+        port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
+        if (!port.openPort())
+            throw new RuntimeException("Failed to open port");
         return port;
     }
 }
