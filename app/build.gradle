@@ -23,7 +23,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
-    implementation files('lib/jSerialComm-2.11.0.jar')
+    // https://mvnrepository.com/artifact/com.fazecast/jSerialComm
+    implementation group: 'com.fazecast', name: 'jSerialComm', version: '2.11.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
