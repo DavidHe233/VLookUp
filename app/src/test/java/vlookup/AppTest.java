@@ -3,5 +3,26 @@
  */
 package vlookup;
 
+import javax.swing.JFrame;
+
+import com.fazecast.jSerialComm.SerialPort;
+
+import vlookup.display.Display;
+import vlookup.utils.IOUtil;
+import vlookup.utils.StringUtil;
+
 class AppTest {
+    public static void main(String[] args) {
+        SerialPort port=IOUtil.setPort();
+        JFrame frame = new JFrame("Draw Points");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        IOUtil.readPort(port);
+        IOUtil.readPort(port);IOUtil.readPort(port);IOUtil.readPort(port);IOUtil.readPort(port);IOUtil.readPort(port);IOUtil.readPort(port);
+        while (true) {
+        String temp=IOUtil.readPort(port);
+      //  System.out.print(temp);
+        Display.ddd(temp, frame);;
+        //System.out.println(StringUtil.parseCoordinates(IOUtil.readPort(port)).toString());
+        }
+    }
 }
