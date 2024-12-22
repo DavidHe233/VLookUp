@@ -10,23 +10,18 @@ public class StringUtil {
 
     public static List<Coordinate> parseCoordinates(String data) {
         List<Coordinate> coordinates = new ArrayList<>();
-        int[] queue = new int[2];
+        int[] queue = new int[3];
         int i = 0;
-        int start, end;
-        for (start = 2, end = 3; end < data.length() - 2; end++) {
-            if (data.substring(end, end + 1).equals("C")) {
-                queue[i] = Integer.parseInt(data.substring(start, end));
-                coordinates.add(new Coordinate(queue[0], queue[1]));
-                break;
+        for (int start = 2, end = 3; end < data.length() - 2; end++) {
+            if (data.charAt(end) == 'C') {
+                Coordinate coordinate = new Coordinate(queue[0], queue[1], queue[2]);
+                coordinates.addLast(coordinate);
+                i = 0;
+                continue;
             }
-            if (data.substring(end, end + 1).equals(DATA_SEPARATOR)) {
-                String coordinate = data.substring(start, end + 1);
+            if (data.charAt(end) == DATA_SEPARATOR.charAt(0)) {
+                queue[i++] = Integer.parseInt(data.substring(start, end));
                 start = end + 1;
-                queue[i++] = Integer.parseInt(coordinate);
-                if (i == 2) {
-                    coordinates.add(new Coordinate(queue[0], queue[1]));
-                    i = 0;
-                }
             }
         }
         return coordinates;

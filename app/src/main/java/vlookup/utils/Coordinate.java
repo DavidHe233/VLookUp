@@ -1,4 +1,4 @@
 package vlookup.utils;
 
-public record Coordinate(int x, int y) {
+public record Coordinate(int size, int x, int y) {
 }
