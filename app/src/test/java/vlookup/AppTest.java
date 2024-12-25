@@ -3,7 +3,14 @@
  */
 package vlookup;
 
+import java.util.List;
+
+import vlookup.utils.Coordinate;
+import vlookup.utils.StringUtil;
+
 class AppTest {
   public static void main(String[] args) {
+    List<Coordinate> coordinates = StringUtil.parseCoordinates("AA0W12W538W151C1W12W398W125C0BB");
+    System.out.println(coordinates);
   }
 }

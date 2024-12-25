@@ -14,9 +14,11 @@ public class StringUtil {
         int i = 0;
         for (int start = 2, end = 3; end < data.length() - 2; end++) {
             if (data.charAt(end) == 'C') {
+                queue[i++] = Integer.parseInt(data.substring(start, end));
                 Coordinate coordinate = new Coordinate(queue[1], queue[2], queue[3]);
                 coordinates.addLast(coordinate);
                 i = 0;
+                start = end + 1;
                 continue;
             }
             if (data.charAt(end) == DATA_SEPARATOR.charAt(0)) {
