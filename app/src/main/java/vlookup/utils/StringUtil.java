@@ -10,11 +10,11 @@ public class StringUtil {
 
     public static List<Coordinate> parseCoordinates(String data) {
         List<Coordinate> coordinates = new ArrayList<>();
-        int[] queue = new int[3];
+        int[] queue = new int[4];
         int i = 0;
         for (int start = 2, end = 3; end < data.length() - 2; end++) {
             if (data.charAt(end) == 'C') {
-                Coordinate coordinate = new Coordinate(queue[0], queue[1], queue[2]);
+                Coordinate coordinate = new Coordinate(queue[1], queue[2], queue[3]);
                 coordinates.addLast(coordinate);
                 i = 0;
                 continue;
