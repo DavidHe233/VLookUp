@@ -80,3 +80,4 @@ public class Display extends JPanel {
         x.setVisible(true);
     }
 }
+
