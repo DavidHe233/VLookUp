@@ -24,7 +24,7 @@ public class Display extends JPanel {
         setPreferredSize(new Dimension(800, 1200)); // 设置面板的大小
     }
 
-    public static void ddd(String line, JFrame frame) {
+    public static void display(String line, JFrame frame) {
         int timeno = 0;
         int count = 0;
         if (line.length() < 8) {
