@@ -25,17 +25,15 @@ public class IOUtil {
             }
         }
         port.setComPortParameters(9600, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
-        port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
+        port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 1000, 0);
         if (!port.openPort())
             throw new RuntimeException("Failed to open port");
         return port;
     }
 
-    public static List<Coordinate> readPort(SerialPort port) {
-        int numRead;
+    public static String readPort(SerialPort port) {
         byte[] readBuffer = new byte[1024];
-        numRead = port.readBytes(readBuffer, readBuffer.length);
-        String data = new String(readBuffer, 0, numRead);
-        return StringUtil.parseCoordinates(data);
+        int numRead = port.readBytes(readBuffer, readBuffer.length);
+            return new String(readBuffer, 0, numRead);
+        }
     }
-}

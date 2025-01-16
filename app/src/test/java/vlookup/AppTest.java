@@ -22,7 +22,7 @@ class AppTest {
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       while (line != null) {
         System.out.println(line);
-        Display.ddd(line, frame);
+        Display.display(line, frame);
         line = f.readLine();
         try {
           Thread.sleep(1000);
