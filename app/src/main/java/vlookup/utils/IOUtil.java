@@ -1,5 +1,6 @@
 package vlookup.utils;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.fazecast.jSerialComm.SerialPort;
@@ -28,5 +29,13 @@ public class IOUtil {
         if (!port.openPort())
             throw new RuntimeException("Failed to open port");
         return port;
+    }
+
+    public static List<Coordinate> readPort(SerialPort port) {
+        int numRead;
+        byte[] readBuffer = new byte[1024];
+        numRead = port.readBytes(readBuffer, readBuffer.length);
+        String data = new String(readBuffer, 0, numRead);
+        return StringUtil.parseCoordinates(data);
     }
 }
